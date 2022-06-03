@@ -42,13 +42,13 @@ apt install php7.4 libapache2-mod-php7.4 php7.4-{mysql,intl,curl,json,gd,xml,mbs
 apt install curl gnupg2 -y
 apt-cache policy php
 add-apt-repository ppa:ondrej/php --yes &> /dev/null
+sudo add-apt-repository ppa:ondrej/php
 apt update
 apt install php7.4
 php7.4 -m
 apt-cache search php7.4-mysql
 apt install php7.4-mysql
 apt install php-pear
-apt-get install -y libsmbclient-dev php-dev php-pear
 apt install mariadb-server 
 apt install php7.4 libapache2-mod-php7.4 php7.4-{mysql,intl,curl,json,gd,xml,mbstring,zip} -y
 echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/server:/10.9.1/Ubuntu_22.04/ /' > /etc/apt/sources.list.d/isv:ownCloud:server:10.list
