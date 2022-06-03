@@ -1,4 +1,4 @@
-﻿#!/bin/bash    
+#!/bin/bash    
 
 showMe(){
  echo "@@@@@@@@@@@@@@@@@@@@@@B?!JJ55#@@@@@@@@@@@@@@@@@@
@@ -72,19 +72,18 @@ Alias / "/var/www/owncloud/"
 
 </Directory>
 EOL
+
 a2ensite owncloud.conf
 a2dissite 000-default.conf
 a2enmod rewrite mime unique_id
 apachectl -t
 systemctl restart apache2
-mysql_secure_installation
-mysql
-mysql -u root -p
+mysql --password=1234 --user=root --host=localhost << eof
 create database ownclouddb;
 grant all privileges on ownclouddb.* to root@localhost identified by "1234";
 flush privileges;
-quit
 exit;
+eof
 cd /var/www/owncloud
 sudo -u www-data php occ maintenance:install \
    --database "mysql" \
@@ -93,6 +92,3 @@ sudo -u www-data php occ maintenance:install \
    --database-pass "1234" \
    --admin-user "root" \
    --admin-pass "1234"
-echo "$(tput setaf 2)all done....."
-sleep 1s
-reset
